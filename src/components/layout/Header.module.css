@@ -1,0 +1,8 @@
+.header {
+  color: #fff;
+  background-color: var(--dark-blue);
+  padding: 10px 20px;
+}
+.header h1 {
+  margin: 0;
+}
