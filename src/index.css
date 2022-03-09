@@ -5,10 +5,22 @@
   --light-blue: #11468f;
   --love-red: #d71414;
   --body-light: #eeeeee;
+  --text-dark: #212529;
+  --text-white: #ffffff;
+
+  --dark-shadow: rgba(0, 0, 0, 0.25);
+
+  --spacer-xs: 0.5rem;
+  --spacer-sm: 1rem;
+  --spacer-md: 1.5rem;
+  --spacer-lg: 2rem;
 }
 
 * {
   box-sizing: border-box;
+}
+html {
+  font-size: 10px;
 }
 body {
   padding: 0;
@@ -16,4 +28,5 @@ body {
   font-family: 'Risque', cursive;
   height: 100vh;
   background-color: var(--body-light);
+  font-size: 1.6rem;
 }

@@ -1,9 +1,9 @@
-.header {
+.footer {
   color: #fff;
   background-color: var(--dark-blue);
-  padding: 10px 20px;
-  height: 60px;
+  padding: 10px;
+  height: 30px;
 }
-.header h1 {
+.footer p {
   margin: 0;
 }

@@ -1,0 +1,56 @@
+button {
+  border: none;
+}
+a {
+  text-decoration: none;
+  display: inline-block;
+}
+a,
+button {
+  border-radius: calc(var(--spacer-sm) * 3);
+  font-size: 2.4rem;
+}
+.primary {
+  background: var(--love-red);
+  color: var(--text-white);
+  padding: calc(var(--spacer-sm) * 0.75) calc(var(--spacer-lg) * 3);
+}
+.primary:hover {
+  background: var(--dark-blue);
+  color: var(--text-white);
+  box-shadow: 0px calc(var(--spacer-sm) * 0.4) calc(var(--spacer-sm) * 0.8)
+    var(--dark-shadow);
+}
+.primary:focus {
+  background: var(--light-blue);
+  color: var(--text-white);
+}
+.primary--alt {
+  background: var(--text-white);
+  color: var(--dark-blue);
+  padding: calc(var(--spacer-sm) * 0.75) calc(var(--spacer-lg) * 3);
+}
+.primary--alt:hover {
+  background: var(--love-red);
+  color: var(--text-white);
+  box-shadow: 0px calc(var(--spacer-sm) * 0.4) calc(var(--spacer-sm) * 0.8)
+    var(--dark-shadow);
+}
+.primary--alt:focus {
+  color: var(--dark-blue);
+  border: solid 1px var(--dark-blue);
+}
+.primary--bare {
+  background: transparent;
+  color: var(--love-red);
+  padding: 0;
+}
+.primary--bare:hover {
+  color: var(--love-red);
+  text-decoration: underline;
+}
+.primary--bare:focus {
+  color: var(--love-red);
+  border: dotted 1px var(--light-blue);
+  border-radius: 0;
+}
