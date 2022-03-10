@@ -34,3 +34,9 @@ body {
   max-width: 1500px;
   margin: 0 auto;
 }
+.sr-only {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}

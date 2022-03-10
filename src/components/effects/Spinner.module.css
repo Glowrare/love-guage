@@ -1,0 +1,31 @@
+.spinner-cycle {
+  display: inline-block;
+  width: calc(var(--spacer-lg) * 2);
+  height: calc(var(--spacer-lg) * 2);
+  vertical-align: calc(var(--spacer-xs) * -0.5);
+  color: (var(--text-dark));
+  border: calc(var(--spacer-sm) * 0.4) solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: 800ms linear infinite cycle;
+}
+@keyframes cycle {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner-cycle.pulse {
+  background-color: currentColor;
+  opacity: 0;
+  animation: 800ms linear infinite pulse;
+}
+@keyframes pulse {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: none;
+  }
+}
