@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <header className={classes.header}>
       <div className='container'>
-        <h1>Love Calculator</h1>
+        <h1>Love Guage</h1>
         <PulsingImage animDuration='3s'>
           <Logo />
         </PulsingImage>

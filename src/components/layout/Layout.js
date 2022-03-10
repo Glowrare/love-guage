@@ -9,7 +9,9 @@ const Layout = (props) => {
     <div>
       <Header />
       <main className={classes.main}>
-        <div className='container'>{props.children}</div>
+        <div className={`${classes['position-above']} container`}>
+          {props.children}
+        </div>
         <PulsingImage position='absolute' rightPos='20px' bottomPos='0px'>
           <Logo />
         </PulsingImage>

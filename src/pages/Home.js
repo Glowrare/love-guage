@@ -6,12 +6,26 @@ const HomePage = () => {
   const yourName = useRef();
   const theirName = useRef();
 
-  const formHandler = (e) => {
+  const formHandler = async (e) => {
     e.preventDefault();
-    const newName = yourName.current.value;
-    const newNameTheirs = theirName.current.value;
-    console.log('You clicked submit.');
-    console.log(`Your data => ${newName} | Thier data => ${newNameTheirs}`);
+    const yourNameVal = yourName.current.value;
+    const theirNameVal = theirName.current.value;
+    console.log(`Your data => ${yourNameVal} | Their data => ${theirNameVal}`);
+
+    const options = {
+      method: 'GET',
+      headers: {
+        'x-rapidapi-host': process.env.REACT_APP_RAPID_HOST,
+        'x-rapidapi-key': process.env.REACT_APP_RAPID_KEY,
+      },
+    };
+
+    const url = `https://love-calculator.p.rapidapi.com/getPercentage?sname=${yourNameVal}&fname=${theirNameVal}`;
+
+    const response = await fetch(url, options);
+    const data = await response.json();
+    console.log(`{result: ${data.result}}`);
+    console.log(`{perc: ${data.percentage}%}`);
   };
 
   return (
