@@ -8,7 +8,7 @@
   color: var(--text-dark);
   display: block;
   padding: calc(var(--spacer-sm) * 0.5) var(--spacer-sm);
-  margin-bottom: var(--spacer-md);
+  margin-bottom: calc(var(--spacer-lg) * 2);
   width: 100%;
   max-width: 500px;
 }

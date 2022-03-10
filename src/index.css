@@ -30,3 +30,7 @@ body {
   background-color: var(--body-light);
   font-size: 1.6rem;
 }
+.container {
+  max-width: 1500px;
+  margin: 0 auto;
+}

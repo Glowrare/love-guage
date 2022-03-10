@@ -1,6 +1,6 @@
 .main {
   margin: 0 auto;
-  padding: calc((100vh - 90px) / 4) calc(var(--spacer-lg) * 1.5);
-  min-height: calc(100vh - 90px);
+  padding: calc((100vh - 100px - 30px) / 4) calc(var(--spacer-lg) * 1.5);
+  min-height: calc(100vh - 100px - 30px);
   background-color: var(--body-light);
 }
