@@ -8,6 +8,10 @@
   --text-dark: #212529;
   --text-white: #ffffff;
 
+  --warning: #f0ad4e;
+  --success: #22bb33;
+  --danger: #bb2124;
+
   --dark-shadow: rgba(0, 0, 0, 0.25);
 
   --spacer-xs: 0.5rem;

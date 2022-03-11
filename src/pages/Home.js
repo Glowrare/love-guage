@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import ErrorMessage from '../components/dialog/ErrorMessage';
+import Guage from '../components/effects/Guage';
 import Spinner from '../components/effects/Spinner';
 import Button from '../components/ui/Button';
 import InputField from '../components/ui/InputField';
@@ -10,9 +11,11 @@ const HomePage = () => {
 
   const [loading, setLoading] = useState(false);
   const [emptyField, setEmptyField] = useState(false);
+  const [guageVal, setGuageVal] = useState(0);
 
   const formHandler = async (e) => {
     setEmptyField(false);
+    setGuageVal(0);
 
     e.preventDefault();
 
@@ -42,8 +45,8 @@ const HomePage = () => {
     setLoading(false);
 
     if (response.status === 200 && response.ok) {
-      console.log(`{result: ${data.result}}`);
       console.log(data);
+      setGuageVal(parseInt(data.percentage));
     } else console.error(response.status);
   };
 
@@ -68,6 +71,7 @@ const HomePage = () => {
         <Button text='Check it Out!' />
       </form>
       {loading && <Spinner />}
+      <Guage val={guageVal} />
     </>
   );
 };
