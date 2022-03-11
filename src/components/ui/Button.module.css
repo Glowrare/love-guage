@@ -1,12 +1,12 @@
-button {
+.button {
   border: none;
 }
-a {
+.link {
   text-decoration: none;
   display: inline-block;
 }
-a,
-button {
+.link,
+.button {
   border-radius: calc(var(--spacer-sm) * 3);
   font-size: 2.4rem;
 }

@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Rambla:ital,wght@0,400;0,700;1,400&display=swap');
+.text-block {
+  font-family: 'Rambla', sans-serif;
+  color: var(--text-dark);
+}
+.text-block a {
+  color: inherit;
+  text-decoration: underline;
+}
+.text-block a:hover {
+  color: var(--love-red);
+}
+.header {
+  text-transform: uppercase;
+  font-size: 3.6rem;
+  font-weight: 700;
+  margin: 0 0 20px;
+}
+.paragraph-block {
+  margin-bottom: 15px;
+}
+.paragraph-block > * {
+  font-size: 2.4rem;
+  margin: 0;
+}
+.paragraph-block > *:not(:last-child) {
+  margin-bottom: 10px;
+}
+.footnote {
+  font-size: 1.8rem;
+  font-style: italic;
+  color: var(--light-blue);
+}
+
+@media only screen and (max-width: 769px) {
+  .header {
+    font-size: 2.4rem;
+  }
+}

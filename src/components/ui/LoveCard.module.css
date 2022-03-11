@@ -1,0 +1,27 @@
+.card {
+  background: var(--text-white);
+  box-shadow: 0 calc(var(--spacer-sm) * 0.4) calc(var(--spacer-sm) * 0.4)
+    rgba(0, 0, 0, 0.25);
+  border-radius: 0 3rem;
+  padding: 7rem 5rem 8rem;
+  position: relative;
+  max-width: 500px;
+}
+.top-left,
+.bottom-right {
+  position: absolute;
+  z-index: -1;
+}
+.top-left {
+  left: -6%;
+  top: -24%;
+}
+.bottom-right {
+  right: -18%;
+  bottom: -7%;
+}
+@media only screen and (max-width: 480px) {
+  .card {
+    padding: 3rem 2rem 4rem;
+  }
+}

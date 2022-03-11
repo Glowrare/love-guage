@@ -6,13 +6,16 @@ const Button = ({ text, url, onClick, theme, mode }) => {
   return (
     <>
       {mode === 'button' && (
-        <button onClick={onClick} className={classes[theme]}>
+        <button
+          onClick={onClick}
+          className={`${classes[theme]} ${classes.button}`}
+        >
           {text}
         </button>
       )}
 
       {mode === 'link' && (
-        <Link to={url} className={classes[theme]}>
+        <Link to={url} className={`${classes[theme]} ${classes.link}`}>
           {text}
         </Link>
       )}

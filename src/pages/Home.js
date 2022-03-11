@@ -1,9 +1,13 @@
 import { useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import ErrorMessage from '../components/dialog/ErrorMessage';
 import Guage from '../components/effects/Guage';
 import Spinner from '../components/effects/Spinner';
+import FlexWrap from '../components/layout/FlexWrap';
+import TextBlock from '../components/layout/TextBlock';
 import Button from '../components/ui/Button';
 import InputField from '../components/ui/InputField';
+import LoveCard from '../components/ui/LoveCard';
 
 const HomePage = () => {
   const yourName = useRef();
@@ -50,28 +54,58 @@ const HomePage = () => {
     } else console.error(response.status);
   };
 
+  const firstParagraph =
+    'Want to find out the chances of sucessful relationship with your partner/crush just for the heck of it?';
+  const secondParagraph =
+    'Enter your name and the name of your partner/lover/crush to check out your compatibility score!';
+
   return (
     <>
-      <form onSubmit={formHandler}>
-        {emptyField && <ErrorMessage message='Input fields cannot be empty' />}
-        <InputField
-          floating={true}
-          label='Your name'
-          placeholder='Your name'
-          refName={yourName}
-          required
+      <FlexWrap gap='20px' wrapMd={true} orderSwap={true}>
+        <form onSubmit={formHandler}>
+          <LoveCard>
+            {emptyField && (
+              <ErrorMessage message='Input fields cannot be empty' />
+            )}
+            <InputField
+              floating={true}
+              label='Your name'
+              placeholder='Your name'
+              refName={yourName}
+              required
+            />
+            <InputField
+              floating={true}
+              label='Their name'
+              placeholder='Their name'
+              refName={theirName}
+              required
+            />
+            <Button text='Check it Out!' />
+          </LoveCard>
+        </form>
+        <TextBlock
+          header='Welcome to Love Guage!'
+          paragraph={
+            <>
+              <p>{firstParagraph}</p>
+              <p>{secondParagraph}</p>
+            </>
+          }
+          footnote={
+            <>
+              Love guage uses{' '}
+              <Link to='https://rapidapi.com/ajith/api/love-calculator/'>
+                {' '}
+                Love Calculator API
+              </Link>{' '}
+              by <Link to='https://rapidapi.com/user/ajith'>Ajith Joseph</Link>
+            </>
+          }
         />
-        <InputField
-          floating={true}
-          label='Their name'
-          placeholder='Their name'
-          refName={theirName}
-          required
-        />
-        <Button text='Check it Out!' />
-      </form>
+      </FlexWrap>
       {loading && <Spinner />}
-      <Guage val={guageVal} />
+      {/* <Guage val={guageVal} /> */}
     </>
   );
 };
