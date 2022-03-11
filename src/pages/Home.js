@@ -1,4 +1,6 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
+import ErrorMessage from '../components/dialog/ErrorMessage';
+import Spinner from '../components/effects/Spinner';
 import Button from '../components/ui/Button';
 import InputField from '../components/ui/InputField';
 
@@ -6,11 +8,24 @@ const HomePage = () => {
   const yourName = useRef();
   const theirName = useRef();
 
+  const [loading, setLoading] = useState(false);
+  const [emptyField, setEmptyField] = useState(false);
+
   const formHandler = async (e) => {
+    setEmptyField(false);
+
     e.preventDefault();
-    const yourNameVal = yourName.current.value;
-    const theirNameVal = theirName.current.value;
-    console.log(`Your data => ${yourNameVal} | Their data => ${theirNameVal}`);
+
+    const yourNameVal = yourName.current.value.trim();
+    const theirNameVal = theirName.current.value.trim();
+
+    // Form error handling
+    if (yourNameVal === '' || theirNameVal === '') {
+      setEmptyField(true);
+      return;
+    }
+
+    setLoading(true);
 
     const options = {
       method: 'GET',
@@ -24,26 +39,36 @@ const HomePage = () => {
 
     const response = await fetch(url, options);
     const data = await response.json();
-    console.log(`{result: ${data.result}}`);
-    console.log(`{perc: ${data.percentage}%}`);
+    setLoading(false);
+
+    if (response.status === 200 && response.ok) {
+      console.log(`{result: ${data.result}}`);
+      console.log(data);
+    } else console.error(response.status);
   };
 
   return (
-    <form onSubmit={formHandler}>
-      <InputField
-        floating={true}
-        label='Your name'
-        placeholder='Your name'
-        refName={yourName}
-      />
-      <InputField
-        floating={true}
-        label='Their name'
-        placeholder='Their name'
-        refName={theirName}
-      />
-      <Button text='Check it Out!' />
-    </form>
+    <>
+      <form onSubmit={formHandler}>
+        {emptyField && <ErrorMessage message='Input fields cannot be empty' />}
+        <InputField
+          floating={true}
+          label='Your name'
+          placeholder='Your name'
+          refName={yourName}
+          required
+        />
+        <InputField
+          floating={true}
+          label='Their name'
+          placeholder='Their name'
+          refName={theirName}
+          required
+        />
+        <Button text='Check it Out!' />
+      </form>
+      {loading && <Spinner />}
+    </>
   );
 };
 

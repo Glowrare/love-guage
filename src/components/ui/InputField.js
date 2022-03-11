@@ -8,7 +8,7 @@ const InputField = (props) => {
         placeholder={props.placeholder}
         className={classes['form-control']}
         ref={props.refName}
-        onKeyPress={props.inputHandler}
+        {...(props.required && { required: 'required' })}
       />
       <label>{props.label}</label>
     </div>
