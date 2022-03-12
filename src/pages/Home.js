@@ -23,11 +23,13 @@ const HomePage = () => {
   const [emptyField, setEmptyField] = useState(false);
   const [guageVal, setGuageVal] = useState(0);
   const [message, setMessage] = useState('');
+  const [failedCall, setFailedCall] = useState(false);
 
   const formHandler = async (e) => {
     setEmptyField(false);
     setGuageVal(0);
     setMessage('');
+    setFailedCall(false);
 
     e.preventDefault();
 
@@ -57,14 +59,18 @@ const HomePage = () => {
     setLoading(false);
 
     if (response.status === 200 && response.ok) {
-      console.log(data);
-
       const dialog = new A11yDialog(dialogContainer.current);
       dialog.show();
 
       setGuageVal(parseInt(data.percentage));
       setMessage(data.result);
-    } else console.error(response.status);
+
+      yourName.current.value = '';
+      theirName.current.value = '';
+    } else {
+      console.error(response.status);
+      setFailedCall(true);
+    }
   };
 
   const firstParagraph =
@@ -95,6 +101,9 @@ const HomePage = () => {
               required
             />
             <Button text='Check it Out!' />
+            {failedCall && (
+              <ErrorMessage message='Oops! Something went wrong. Please try again.' />
+            )}
           </LoveCard>
         </form>
         <TextBlock
