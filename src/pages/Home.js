@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import Dialog from '../components/dialog/Dialog';
 import ErrorMessage from '../components/dialog/ErrorMessage';
 import Guage from '../components/effects/Guage';
@@ -23,11 +23,9 @@ const HomePage = () => {
   const [emptyField, setEmptyField] = useState(false);
   const [guageVal, setGuageVal] = useState(0);
   const [message, setMessage] = useState('');
-  // const [resultReady, setResultReady] = useState(false);
 
   const formHandler = async (e) => {
     setEmptyField(false);
-    // setResultReady(false)
     setGuageVal(0);
     setMessage('');
 
@@ -60,13 +58,12 @@ const HomePage = () => {
 
     if (response.status === 200 && response.ok) {
       console.log(data);
-      setGuageVal(parseInt(data.percentage));
-      setMessage(data.result);
-
-      // setResultReady(true)
 
       const dialog = new A11yDialog(dialogContainer.current);
       dialog.show();
+
+      setGuageVal(parseInt(data.percentage));
+      setMessage(data.result);
     } else console.error(response.status);
   };
 
@@ -74,11 +71,6 @@ const HomePage = () => {
     'Want to find out the chances of sucessful relationship with your partner/crush just for the heck of it?';
   const secondParagraph =
     'Enter your name and the name of your partner/lover/crush to check out your compatibility score!';
-
-  // useEffect(() => {
-  //   const dialog = new A11yDialog(dialogContainer.current);
-  //   dialog.show();
-  // }, []);
 
   return (
     <>

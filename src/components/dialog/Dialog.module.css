@@ -18,10 +18,13 @@
   margin: auto;
   z-index: 2;
   position: relative;
-  background-color: var(--text-white);
+  background-color: var(--body-light);
+  border: solid 2px var(--dark-blue);
   padding: 20px 10px;
   border-radius: 0 3rem;
   min-width: 500px;
+  box-shadow: 0px calc(var(--spacer-sm) * 0.4) calc(var(--spacer-sm) * 0.8)
+    var(--dark-shadow);
 }
 .dialog-button {
   background: transparent;
@@ -32,7 +35,8 @@
   color: var(--love-red);
 }
 .dialog-text {
-  font-size: 1.8rem;
+  font-size: 2rem;
+  text-align: center;
 }
 @media only screen and (max-width: 600px) {
   .dialog-content {
