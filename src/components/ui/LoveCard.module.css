@@ -17,8 +17,8 @@
   top: -24%;
 }
 .bottom-right {
-  right: -18%;
-  bottom: -7%;
+  right: -7%;
+  bottom: -30%;
 }
 @media only screen and (max-width: 480px) {
   .card {

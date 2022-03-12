@@ -1,7 +1,8 @@
-import { useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
+import Dialog from '../components/dialog/Dialog';
 import ErrorMessage from '../components/dialog/ErrorMessage';
 import Guage from '../components/effects/Guage';
+import Overlay from '../components/effects/Overlay';
 import Spinner from '../components/effects/Spinner';
 import FlexWrap from '../components/layout/FlexWrap';
 import TextBlock from '../components/layout/TextBlock';
@@ -9,17 +10,26 @@ import Button from '../components/ui/Button';
 import InputField from '../components/ui/InputField';
 import LoveCard from '../components/ui/LoveCard';
 
+import A11yDialog from 'a11y-dialog';
+
 const HomePage = () => {
   const yourName = useRef();
   const theirName = useRef();
+  const dialogContainer = useRef();
+
+  // dialog.show();
 
   const [loading, setLoading] = useState(false);
   const [emptyField, setEmptyField] = useState(false);
   const [guageVal, setGuageVal] = useState(0);
+  const [message, setMessage] = useState('');
+  // const [resultReady, setResultReady] = useState(false);
 
   const formHandler = async (e) => {
     setEmptyField(false);
+    // setResultReady(false)
     setGuageVal(0);
+    setMessage('');
 
     e.preventDefault();
 
@@ -51,6 +61,12 @@ const HomePage = () => {
     if (response.status === 200 && response.ok) {
       console.log(data);
       setGuageVal(parseInt(data.percentage));
+      setMessage(data.result);
+
+      // setResultReady(true)
+
+      const dialog = new A11yDialog(dialogContainer.current);
+      dialog.show();
     } else console.error(response.status);
   };
 
@@ -59,9 +75,14 @@ const HomePage = () => {
   const secondParagraph =
     'Enter your name and the name of your partner/lover/crush to check out your compatibility score!';
 
+  // useEffect(() => {
+  //   const dialog = new A11yDialog(dialogContainer.current);
+  //   dialog.show();
+  // }, []);
+
   return (
     <>
-      <FlexWrap gap='20px' wrapMd={true} orderSwap={true}>
+      <FlexWrap gap='50px' wrapMd={true} orderSwap={true}>
         <form onSubmit={formHandler}>
           <LoveCard>
             {emptyField && (
@@ -95,17 +116,30 @@ const HomePage = () => {
           footnote={
             <>
               Love guage uses{' '}
-              <Link to='https://rapidapi.com/ajith/api/love-calculator/'>
-                {' '}
+              <a
+                href='https://rapidapi.com/ajith/api/love-calculator/'
+                target='_blank'
+                rel='noreferrer'
+              >
                 Love Calculator API
-              </Link>{' '}
-              by <Link to='https://rapidapi.com/user/ajith'>Ajith Joseph</Link>
+              </a>{' '}
+              by{' '}
+              <a
+                href='https://rapidapi.com/user/ajith'
+                target='_blank'
+                rel='noreferrer'
+              >
+                Ajith Joseph
+              </a>
             </>
           }
         />
       </FlexWrap>
+      {loading && <Overlay />}
       {loading && <Spinner />}
-      {/* <Guage val={guageVal} /> */}
+      <Dialog dialogContainer={dialogContainer} message={message}>
+        <Guage val={guageVal} />
+      </Dialog>
     </>
   );
 };

@@ -1,13 +1,19 @@
 .spinner-cycle {
   display: inline-block;
-  width: calc(var(--spacer-lg) * 2);
-  height: calc(var(--spacer-lg) * 2);
+  width: calc(var(--spacer-lg) * 5);
+  height: calc(var(--spacer-lg) * 5);
   vertical-align: calc(var(--spacer-xs) * -0.5);
-  color: (var(--text-dark));
+  color: var(--love-red);
   border: calc(var(--spacer-sm) * 0.4) solid currentColor;
   border-right-color: transparent;
   border-radius: 50%;
   animation: 800ms linear infinite cycle;
+  z-index: 1000;
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  pointer-events: none;
+  user-select: none;
 }
 @keyframes cycle {
   to {

@@ -1,0 +1,41 @@
+.dialog-container,
+.dialog-overlay {
+  position: fixed;
+  inset: 0;
+  font-family: 'Rambla', sans-serif;
+}
+.dialog-container {
+  z-index: 2;
+  display: flex;
+}
+.dialog-container[aria-hidden='true'] {
+  display: none;
+}
+.dialog-overlay {
+  background-color: #04156262;
+}
+.dialog-content {
+  margin: auto;
+  z-index: 2;
+  position: relative;
+  background-color: var(--text-white);
+  padding: 20px 10px;
+  border-radius: 0 3rem;
+  min-width: 500px;
+}
+.dialog-button {
+  background: transparent;
+  border: none;
+  font-size: 5rem;
+  margin-left: auto;
+  display: block;
+  color: var(--love-red);
+}
+.dialog-text {
+  font-size: 1.8rem;
+}
+@media only screen and (max-width: 600px) {
+  .dialog-content {
+    min-width: 320px;
+  }
+}
