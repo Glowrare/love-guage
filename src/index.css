@@ -18,6 +18,9 @@
   --spacer-sm: 1rem;
   --spacer-md: 1.5rem;
   --spacer-lg: 2rem;
+
+  --pry-font: 'Risque', cursive;
+  --sec-font: 'Rambla', sans-serif;
 }
 
 * {
@@ -29,14 +32,10 @@ html {
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Risque', cursive;
+  font-family: var(--pry-font);
   height: 100vh;
   background-color: var(--body-light);
   font-size: 1.6rem;
-}
-.container {
-  max-width: 1500px;
-  margin: 0 auto;
 }
 .sr-only {
   position: absolute;

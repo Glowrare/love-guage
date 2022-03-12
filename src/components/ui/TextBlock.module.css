@@ -1,5 +1,5 @@
 .text-block {
-  font-family: 'Rambla', sans-serif;
+  font-family: var(--sec-font);
   color: var(--text-dark);
 }
 .text-block a {
@@ -11,6 +11,7 @@
 }
 .header {
   text-transform: uppercase;
+  font-family: var(--pry-font);
   font-size: 3.6rem;
   font-weight: 700;
   margin: 0 0 20px;
