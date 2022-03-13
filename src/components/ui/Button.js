@@ -15,7 +15,11 @@ const Button = ({ text, url, onClick, theme, mode }) => {
       )}
 
       {mode === 'link' && (
-        <Link to={url} className={`${classes[theme]} ${classes.link}`}>
+        <Link
+          to={url}
+          className={`${classes[theme]} ${classes.link}`}
+          onClick={onClick}
+        >
           {text}
         </Link>
       )}

@@ -1,4 +1,6 @@
-import { useRef, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
+import A11yDialog from 'a11y-dialog';
+
 import Dialog from '../components/dialog/Dialog';
 import ErrorMessage from '../components/dialog/ErrorMessage';
 import Guage from '../components/effects/Guage';
@@ -9,21 +11,20 @@ import TextBlock from '../components/ui/TextBlock';
 import Button from '../components/ui/Button';
 import InputField from '../components/ui/InputField';
 import LoveCard from '../components/ui/LoveCard';
-
-import A11yDialog from 'a11y-dialog';
+import HistoryContext from '../store/history-context';
 
 const HomePage = () => {
   const yourName = useRef();
   const theirName = useRef();
   const dialogContainer = useRef();
 
-  // dialog.show();
-
   const [loading, setLoading] = useState(false);
   const [emptyField, setEmptyField] = useState(false);
   const [guageVal, setGuageVal] = useState(0);
   const [message, setMessage] = useState('');
   const [failedCall, setFailedCall] = useState(false);
+
+  const historyCtx = useContext(HistoryContext);
 
   const formHandler = async (e) => {
     setEmptyField(false);
@@ -64,6 +65,25 @@ const HomePage = () => {
 
       setGuageVal(parseInt(data.percentage));
       setMessage(data.result);
+
+      const newItem = {
+        id: `ET${Date.now()}`,
+        yourName: yourNameVal,
+        theirName: theirNameVal,
+        message: data.result,
+        guageMeter: data.percentage,
+      };
+
+      historyCtx.addItem(newItem);
+
+      //Update to local storage
+      const savedHistory = localStorage.getItem('history');
+      const historyList = JSON.parse(savedHistory);
+      historyList.push(newItem);
+      localStorage.setItem('history', JSON.stringify(historyList));
+
+      console.log({ contextData: historyCtx.history });
+      console.log({ localData: JSON.parse(localStorage.getItem('history')) });
 
       yourName.current.value = '';
       theirName.current.value = '';

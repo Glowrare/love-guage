@@ -5,8 +5,23 @@ import { ReactComponent as Logo } from './../../love-icon-body.svg';
 import PulsingImage from '../effects/PulsingImage';
 import Button from '../ui/Button';
 import Container from '../ui/Container';
+import { useEffect, useState } from 'react';
 
 const Layout = (props) => {
+  const [home, setHome] = useState(true);
+  const [url, setUrl] = useState('/history');
+  const [text, setText] = useState('History');
+
+  useEffect(() => {
+    if (home) {
+      setText('History');
+      setUrl('/history');
+    } else {
+      setUrl('/');
+      setText('Go Home');
+    }
+  }, [home]);
+
   return (
     <div>
       <Header />
@@ -14,9 +29,10 @@ const Layout = (props) => {
         <nav className={classes.navigation}>
           <Button
             mode='link'
-            url='/history'
+            url={url}
             theme='primary--bare'
-            text='History'
+            text={text}
+            onClick={() => setHome(!home)}
           />
         </nav>
       </Container>

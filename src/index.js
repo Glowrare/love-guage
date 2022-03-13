@@ -5,6 +5,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 import './index.css';
 import App from './App';
+import { HistoryContextProvider } from './store/history-context';
 
 // ReactDOM.render(
 //   <React.StrictMode>
@@ -14,8 +15,10 @@ import App from './App';
 // );
 
 ReactDOM.render(
-  <Router>
-    <App />
-  </Router>,
+  <HistoryContextProvider>
+    <Router>
+      <App />
+    </Router>
+  </HistoryContextProvider>,
   document.getElementById('root')
 );

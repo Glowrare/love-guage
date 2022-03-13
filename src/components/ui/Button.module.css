@@ -30,12 +30,12 @@
   background: var(--text-white);
   color: var(--dark-blue);
   padding: calc(var(--spacer-sm) * 0.75) calc(var(--spacer-lg) * 3);
+  box-shadow: 0px calc(var(--spacer-sm) * 0.4) calc(var(--spacer-sm) * 0.8)
+    var(--dark-shadow);
 }
 .primary--alt:hover {
   background: var(--love-red);
   color: var(--text-white);
-  box-shadow: 0px calc(var(--spacer-sm) * 0.4) calc(var(--spacer-sm) * 0.8)
-    var(--dark-shadow);
 }
 .primary--alt:focus {
   color: var(--dark-blue);
