@@ -1,28 +1,46 @@
 // import { useState } from 'react'
+import { CSVLink } from 'react-csv';
 import Button from '../ui/Button';
 import classes from './HistoryAction.module.css';
 
-const HistoryAction = ({ toggleView, viewType }) => {
+const HistoryAction = ({ toggleView, viewType, csvData, csvHeaders }) => {
   // const [cardView, setCardView] = useState(true)
   // const [tableView, setTableView] = useState(false)
 
   return (
     <div className={`${classes['history-actions']} ${classes[viewType]}`}>
-      <span className='sr-only'>
-        Click buttons to toggle list display in card or table view. Default view
-        is card
-      </span>
-      <span>View as: </span>
-      <Button
-        text='Grid'
-        onClick={() => toggleView(false)}
-        theme='primary--alt'
-      />
-      <Button
-        text='Table'
-        onClick={() => toggleView(true)}
-        theme='primary--alt'
-      />
+      <div className={classes['toggle-group']}>
+        <span className='sr-only'>
+          Click buttons to toggle list display in card or table view. Default
+          view is card
+        </span>
+        <span>View as: </span>
+        <Button
+          text='Grid'
+          onClick={() => toggleView(false)}
+          theme='primary--alt'
+        />
+        <Button
+          text='Table'
+          onClick={() => toggleView(true)}
+          theme='primary--alt'
+        />
+      </div>
+      <div>
+        <Button
+          text='Delete'
+          // onClick={deleteHandler}
+          theme='primary--bare'
+        />
+        <CSVLink
+          data={csvData}
+          headers={csvHeaders}
+          filename='love-guage.csv'
+          className={classes['download--cta']}
+        >
+          Download CSV
+        </CSVLink>
+      </div>
     </div>
   );
 };

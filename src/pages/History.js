@@ -11,8 +11,6 @@ import HistoryTable from '../components/history/HistoryTable';
 import HistoryAction from '../components/history/HistoryAction';
 
 const HistoryPage = () => {
-  // const [loading, setLoading] = useState(false);
-
   const { history, totalHistory } = useContext(HistoryContext);
 
   const dialogContainer = useRef();
@@ -21,6 +19,14 @@ const HistoryPage = () => {
   const [message, setMessage] = useState('');
   const [tableView, setTableView] = useState(false);
   const [viewType, setViewType] = useState('grid');
+  const [csvData, setCsvdata] = useState(history);
+
+  const csvHeaders = [
+    { label: 'Your Name', key: 'yourName' },
+    { label: 'Their Name', key: 'theirName' },
+    { label: 'Love Guage (%)', key: 'guageMeter' },
+    { label: 'Message', key: 'message' },
+  ];
 
   const clickHandler = (id) => {
     const dialog = new A11yDialog(dialogContainer.current);
@@ -40,13 +46,18 @@ const HistoryPage = () => {
     }
   };
 
-  // useEffect(() => {
-  //   toggleViewHandler(tableView);
-  // });
+  useEffect(() => {
+    setCsvdata(history);
+  }, [history]);
 
   return (
     <div>
-      <HistoryAction toggleView={toggleViewHandler} viewType={viewType} />
+      <HistoryAction
+        toggleView={toggleViewHandler}
+        viewType={viewType}
+        csvData={csvData}
+        csvHeaders={csvHeaders}
+      />
       <FlexWrap wrap='wrap' gap='20px'>
         {totalHistory >= 1 ? (
           !tableView ? (

@@ -1,8 +1,12 @@
 .history-actions {
   margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
-.history-actions.grid button:first-of-type,
-.history-actions.table button:last-of-type {
+.history-actions.grid .toggle-group button:first-of-type,
+.history-actions.table .toggle-group button:last-of-type {
   background-color: var(--love-red);
   color: var(--text-white);
 }
@@ -14,9 +18,27 @@
 .history-actions button {
   margin-bottom: 20px;
 }
+.download--cta {
+  text-decoration: none;
+  color: var(--text-white);
+  background-color: var(--dark-blue);
+  padding: 1rem 1.5rem;
+  border-radius: calc(var(--spacer-lg) * 1.5);
+  font-family: var(--sec-font);
+  display: inline-block;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  box-shadow: 0px calc(var(--spacer-sm) * 0.4) calc(var(--spacer-sm) * 0.8)
+    var(--dark-shadow);
+  font-weight: 700;
+}
+.download--cta:hover {
+  background-color: var(--light-blue);
+}
 @media only screen and (max-width: 600px) {
   .history-actions {
     text-align: right;
+    justify-content: end;
   }
   .history-actions button:first-of-type {
     margin-right: 10px;
