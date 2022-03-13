@@ -78,12 +78,12 @@ const HomePage = () => {
 
       //Update to local storage
       const savedHistory = localStorage.getItem('history');
-      const historyList = JSON.parse(savedHistory);
+      let historyList = [];
+      if (savedHistory) {
+        historyList = JSON.parse(savedHistory);
+      }
       historyList.push(newItem);
       localStorage.setItem('history', JSON.stringify(historyList));
-
-      console.log({ contextData: historyCtx.history });
-      console.log({ localData: JSON.parse(localStorage.getItem('history')) });
 
       yourName.current.value = '';
       theirName.current.value = '';
@@ -120,7 +120,7 @@ const HomePage = () => {
               refName={theirName}
               required
             />
-            <Button text='Check it Out!' />
+            <Button type='submit' text='Check it Out!' />
             {failedCall && (
               <ErrorMessage message='Oops! Something went wrong. Please try again.' />
             )}

@@ -2,16 +2,15 @@ import A11yDialog from 'a11y-dialog';
 import { useContext, useEffect, useRef, useState } from 'react';
 import Dialog from '../components/dialog/Dialog';
 import Guage from '../components/effects/Guage';
-// import Overlay from '../components/effects/Overlay';
-// import Spinner from '../components/effects/Spinner';
 import FlexWrap from '../components/ui/FlexWrap';
 import HistoryCard from '../components/history/HistoryCard';
 import HistoryContext from '../store/history-context';
 import HistoryTable from '../components/history/HistoryTable';
 import HistoryAction from '../components/history/HistoryAction';
+import TextBlock from '../components/ui/TextBlock';
 
 const HistoryPage = () => {
-  const { history, totalHistory } = useContext(HistoryContext);
+  const { history, totalHistory, deleteItems } = useContext(HistoryContext);
 
   const dialogContainer = useRef();
 
@@ -36,8 +35,19 @@ const HistoryPage = () => {
     setMessage(clickedItem.message);
   };
 
-  const toggleViewHandler = (showasTable) => {
-    if (showasTable) {
+  const deleteHandler = () => {
+    const confirmation =
+      'You are about to delete the entire list. This action CANNOT be reversed. Proceed?';
+    if (totalHistory < 1) {
+      window.alert('Nothing to delete');
+    } else if (window.confirm(confirmation) && totalHistory >= 1) {
+      deleteItems();
+      localStorage.setItem('history', []);
+    } else return;
+  };
+
+  const toggleViewHandler = (showAsTable) => {
+    if (showAsTable) {
       setTableView(true);
       setViewType('table');
     } else {
@@ -57,6 +67,7 @@ const HistoryPage = () => {
         viewType={viewType}
         csvData={csvData}
         csvHeaders={csvHeaders}
+        deleteHandler={deleteHandler}
       />
       <FlexWrap wrap='wrap' gap='20px'>
         {totalHistory >= 1 ? (
@@ -77,11 +88,9 @@ const HistoryPage = () => {
             <HistoryTable history={history} clickHandler={clickHandler} />
           )
         ) : (
-          'No data to show'
+          <TextBlock header='No data to show' />
         )}
-        {/* <HistoryTable history={history} clickHandler={clickHandler} /> */}
       </FlexWrap>
-      {/* {totalHistory < 1 && 'No data to show'} */}
       <Dialog dialogContainer={dialogContainer} message={message}>
         <Guage val={guageVal} />
       </Dialog>

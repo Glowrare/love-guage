@@ -36,7 +36,6 @@
   text-align: right;
 }
 .history-table button {
-  /* font-family: var(--sec-font); */
   text-transform: capitalize;
   font-size: 2rem;
 }

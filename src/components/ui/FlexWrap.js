@@ -1,5 +1,3 @@
-// import PropTypes from 'prop-types';
-
 import classes from './FlexWrap.module.css';
 
 const FlexWrap = ({
@@ -31,7 +29,4 @@ const FlexWrap = ({
   );
 };
 
-// FlexWrap.propType = {
-//   wrap: warp.PropTypes
-// }
 export default FlexWrap;

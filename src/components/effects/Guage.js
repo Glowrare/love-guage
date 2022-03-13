@@ -29,11 +29,11 @@ const Guage = ({ val }) => {
   }, [val]);
 
   return (
-    <div className={classes.gauge} ref={gaugeElement}>
-      <div className={classes['gauge__body']}>
-        <div className={classes['gauge__fill']} style={customStyle}></div>
+    <div className={classes['gauge--container']} ref={gaugeElement}>
+      <div className={classes['gauge--body']}>
+        <div className={classes['gauge--fill']} style={customStyle}></div>
         <div
-          className={classes['gauge__cover']}
+          className={classes['gauge--cover']}
           aria-label={`Your Love guage is ${guagePerc}`}
         >
           {guagePerc}

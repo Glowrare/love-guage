@@ -4,26 +4,21 @@ const HistoryContext = createContext({
   history: [],
   totalHistory: 0,
   addItem: (item) => {},
-  deleteItem: (id) => {},
   deleteItems: () => {},
 });
 
 const HistoryContextProvider = (props) => {
-  // const [userHistory, setUserHistory] = useState([]);
   const [userHistory, setUserHistory] = useState(() => {
     const savedHistory = localStorage.getItem('history');
-    const historyList = JSON.parse(savedHistory);
-    return historyList || [];
+    if (savedHistory) {
+      const historyList = JSON.parse(savedHistory);
+      return historyList;
+    } else return [];
   });
 
   const addItemHandler = (item) => {
     setUserHistory((prevUserHistory) => {
       return prevUserHistory.concat(item);
-    });
-  };
-  const deleteItemHandler = (id) => {
-    setUserHistory((prevUserHistory) => {
-      return prevUserHistory.filter((item) => item.id !== id);
     });
   };
   const deleteItemsHandler = () => {
@@ -34,7 +29,6 @@ const HistoryContextProvider = (props) => {
     history: userHistory,
     totalHistory: userHistory.length,
     addItem: addItemHandler,
-    deleteItem: deleteItemHandler,
     deleteItems: deleteItemsHandler,
   };
 

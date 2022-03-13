@@ -7,13 +7,6 @@ import './index.css';
 import App from './App';
 import { HistoryContextProvider } from './store/history-context';
 
-// ReactDOM.render(
-//   <React.StrictMode>
-//     <App />
-//   </React.StrictMode>,
-//   document.getElementById('root')
-// );
-
 ReactDOM.render(
   <HistoryContextProvider>
     <Router>

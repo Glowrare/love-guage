@@ -18,6 +18,11 @@
 .history-actions button {
   margin-bottom: 20px;
 }
+.cta-group button {
+  font-family: var(--sec-font);
+  text-transform: none;
+  font-weight: 700;
+}
 .download--cta {
   text-decoration: none;
   color: var(--text-white);

@@ -1,7 +1,7 @@
 .header {
   color: #fff;
   background-color: var(--dark-blue);
-  /* padding: 10px 20px; */
+  padding: 0 20px;
   height: 100px;
 }
 .header h1 {

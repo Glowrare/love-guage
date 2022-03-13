@@ -1,12 +1,14 @@
-// import { useState } from 'react'
 import { CSVLink } from 'react-csv';
 import Button from '../ui/Button';
 import classes from './HistoryAction.module.css';
 
-const HistoryAction = ({ toggleView, viewType, csvData, csvHeaders }) => {
-  // const [cardView, setCardView] = useState(true)
-  // const [tableView, setTableView] = useState(false)
-
+const HistoryAction = ({
+  toggleView,
+  viewType,
+  csvData,
+  csvHeaders,
+  deleteHandler,
+}) => {
   return (
     <div className={`${classes['history-actions']} ${classes[viewType]}`}>
       <div className={classes['toggle-group']}>
@@ -26,10 +28,10 @@ const HistoryAction = ({ toggleView, viewType, csvData, csvHeaders }) => {
           theme='primary--alt'
         />
       </div>
-      <div>
+      <div className={classes['cta-group']}>
         <Button
-          text='Delete'
-          // onClick={deleteHandler}
+          text='Empty List'
+          onClick={deleteHandler}
           theme='primary--bare'
         />
         <CSVLink
