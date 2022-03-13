@@ -8,6 +8,7 @@ const HistoryAction = ({
   csvData,
   csvHeaders,
   deleteHandler,
+  emptyList,
 }) => {
   return (
     <div className={`${classes['history-actions']} ${classes[viewType]}`}>
@@ -34,14 +35,16 @@ const HistoryAction = ({
           onClick={deleteHandler}
           theme='primary--bare'
         />
-        <CSVLink
-          data={csvData}
-          headers={csvHeaders}
-          filename='love-guage.csv'
-          className={classes['download--cta']}
-        >
-          Download CSV
-        </CSVLink>
+        {!emptyList && (
+          <CSVLink
+            data={csvData}
+            headers={csvHeaders}
+            filename='love-guage.csv'
+            className={classes['download--cta']}
+          >
+            Download CSV
+          </CSVLink>
+        )}
       </div>
     </div>
   );

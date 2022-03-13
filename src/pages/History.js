@@ -19,6 +19,7 @@ const HistoryPage = () => {
   const [tableView, setTableView] = useState(false);
   const [viewType, setViewType] = useState('grid');
   const [csvData, setCsvdata] = useState(history);
+  const [emptyList, setEmptyList] = useState(true);
 
   const csvHeaders = [
     { label: 'Your Name', key: 'yourName' },
@@ -58,7 +59,12 @@ const HistoryPage = () => {
 
   useEffect(() => {
     setCsvdata(history);
-  }, [history]);
+    if (totalHistory >= 1) {
+      setEmptyList(false);
+    } else {
+      setEmptyList(true);
+    }
+  }, [history, totalHistory]);
 
   return (
     <div>
@@ -68,6 +74,7 @@ const HistoryPage = () => {
         csvData={csvData}
         csvHeaders={csvHeaders}
         deleteHandler={deleteHandler}
+        emptyList={emptyList}
       />
       <FlexWrap wrap='wrap' gap='20px'>
         {totalHistory >= 1 ? (
