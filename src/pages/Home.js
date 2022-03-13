@@ -94,7 +94,7 @@ const HomePage = () => {
   };
 
   const firstParagraph =
-    'Want to find out the chances of sucessful relationship with your partner/crush just for the heck of it?';
+    'Want to find out the chances of successful relationship with your partner/crush just for the heck of it?';
   const secondParagraph =
     'Enter your name and the name of your partner/lover/crush to check out your compatibility score!';
 
