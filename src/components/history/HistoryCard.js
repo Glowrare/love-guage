@@ -1,6 +1,6 @@
-import Button from './Button';
+import Button from '../ui/Button';
 import classes from './HistoryCard.module.css';
-import LoveCard from './LoveCard';
+import LoveCard from '../ui/LoveCard';
 
 const HistoryCard = (props) => {
   const customStyle = {

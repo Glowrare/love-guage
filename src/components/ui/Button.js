@@ -7,6 +7,7 @@ const Button = ({ text, url, onClick, theme, mode }) => {
     <>
       {mode === 'button' && (
         <button
+          type='button'
           onClick={onClick}
           className={`${classes[theme]} ${classes.button}`}
         >

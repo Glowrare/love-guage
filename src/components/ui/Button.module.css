@@ -1,5 +1,6 @@
 .button {
   border: none;
+  cursor: pointer;
 }
 .link {
   text-decoration: none;
@@ -38,8 +39,10 @@
   color: var(--text-white);
 }
 .primary--alt:focus {
+  background: var(--text-white);
   color: var(--dark-blue);
   border: solid 1px var(--dark-blue);
+  box-shadow: none;
 }
 .primary--bare {
   background: transparent;

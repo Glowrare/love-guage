@@ -1,0 +1,24 @@
+.history-actions {
+  margin-bottom: 30px;
+}
+.history-actions.grid button:first-of-type,
+.history-actions.table button:last-of-type {
+  background-color: var(--love-red);
+  color: var(--text-white);
+}
+.history-actions button:first-of-type {
+  margin-right: 30px;
+  margin-left: 15px;
+}
+
+.history-actions button {
+  margin-bottom: 20px;
+}
+@media only screen and (max-width: 600px) {
+  .history-actions {
+    text-align: right;
+  }
+  .history-actions button:first-of-type {
+    margin-right: 10px;
+  }
+}

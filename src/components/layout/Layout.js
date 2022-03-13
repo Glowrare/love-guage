@@ -6,21 +6,24 @@ import PulsingImage from '../effects/PulsingImage';
 import Button from '../ui/Button';
 import Container from '../ui/Container';
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 const Layout = (props) => {
-  const [home, setHome] = useState(true);
+  // const [home, setHome] = useState(true);
   const [url, setUrl] = useState('/history');
   const [text, setText] = useState('History');
 
+  const location = useLocation();
+
   useEffect(() => {
-    if (home) {
+    if (location.pathname === '/') {
       setText('History');
       setUrl('/history');
     } else {
       setUrl('/');
       setText('Go Home');
     }
-  }, [home]);
+  }, [location]);
 
   return (
     <div>
@@ -32,7 +35,7 @@ const Layout = (props) => {
             url={url}
             theme='primary--bare'
             text={text}
-            onClick={() => setHome(!home)}
+            // onClick={() => setHome(!home)}
           />
         </nav>
       </Container>
