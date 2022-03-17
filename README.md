@@ -1,4 +1,9 @@
-# Getting Started with Create React App
+# Love Guage
+Love Guage is a responsive web app to check love compatibility score for couples using Love Calculator API. With love guage, you can export the csv data for your previous checks in the history page.
+
+[Visit live site](http://love-guage.netlify.app/)
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
